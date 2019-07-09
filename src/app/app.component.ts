@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,12 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
+
+  readonly VAPID_PUBLIC_KEY = "BKwgxDYxGJbZh-hyK64eejQ03_LlwZFto_4mm5Y9HhEh1F5-7ep2ZAqhHFEPapvWD2wfNGHpsh0hyxGNFQ5k7u8";
+
   title = 'ServiceApp';
 
-  constructor(private swUpdate: SwUpdate) { }
+  constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
@@ -19,5 +22,11 @@ export class AppComponent implements OnInit {
         }
       });
     }
+  }
+
+  public subscribe() {
+    this.swPush.requestSubscription({
+      serverPublicKey: this.VAPID_PUBLIC_KEY
+    });
   }
 }
