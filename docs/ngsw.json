@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1562662898386,
+  "timestamp": 1562667104662,
   "index": "/ServiceApp/index.html",
   "assetGroups": [
     {
@@ -47,7 +47,7 @@
     "/ServiceApp/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/ServiceApp/es2015-polyfills.bda95d5896422d031328.js": "1612fe8f7e8e0c856f0885ff179e93363c67834f",
     "/ServiceApp/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/ServiceApp/index.html": "7483677d1182528c8935631d5b39882af28109de",
+    "/ServiceApp/index.html": "0c94f4064f310e3a93c8448d285e0dbc69be0100",
     "/ServiceApp/main.27227a0541b3836c7bad.js": "178ef116956141c820a26be2c4d20c80af0fbbd3",
     "/ServiceApp/polyfills.8bbb231b43165d65d357.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
     "/ServiceApp/runtime.26209474bfa8dc87a77c.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
