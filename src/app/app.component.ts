@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { SwUpdate, SwPush } from '@angular/service-worker';
 
 @Component({
@@ -7,7 +7,10 @@ import { SwUpdate, SwPush } from '@angular/service-worker';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild('videoElement') videoElement: any;
+  @ViewChild('videoElement', { read: ElementRef }) set videoElement(content: ElementRef) {
+    this.video = content.nativeElement;
+  }
+  // @ViewChild('videoElement') videoElement: any;
   video: any;
 
   readonly VAPID_PUBLIC_KEY = "BKwgxDYxGJbZh-hyK64eejQ03_LlwZFto_4mm5Y9HhEh1F5-7ep2ZAqhHFEPapvWD2wfNGHpsh0hyxGNFQ5k7u8";
@@ -27,7 +30,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.video = this.videoElement.nativeElement;
+    // this.video = this.videoElement.nativeElement;
   }
 
   private addPushSubscribe(sub) {
