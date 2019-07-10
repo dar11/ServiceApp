@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build_docs": "ng build --prod --output-path docs --base-href https://dar11.github.io/ServiceApp/",
+    "deploy": "git add . && git commit . -m 'Deploy' && git push",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
