@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { SwUpdate, SwPush } from '@angular/service-worker';
 
 @Component({
@@ -6,7 +6,7 @@ import { SwUpdate, SwPush } from '@angular/service-worker';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('videoElement') videoElement: any;
   video: any;
 
@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
-    this.video = this.videoElement.nativeElement;
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         if (confirm("New version available. Load New Version?")) {
@@ -25,6 +24,10 @@ export class AppComponent implements OnInit {
         }
       });
     }
+  }
+
+  ngAfterViewInit() {
+    this.video = this.videoElement.nativeElement;
   }
 
   private addPushSubscribe(sub) {
