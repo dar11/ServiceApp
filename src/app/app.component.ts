@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   private initCamera(config: any) {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia(config).then(stream => {
-        this.video.src = window.URL.createObjectURL(stream);
+        this.video.src = stream;
         this.video.play();
       });
     }
