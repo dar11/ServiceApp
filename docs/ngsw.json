@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1562748668336,
+  "timestamp": 1562749157509,
   "index": "https://dar11.github.io/ServiceApp/index.html",
   "assetGroups": [
     {
@@ -11,7 +11,7 @@
         "https://dar11.github.io/ServiceApp/es2015-polyfills.bda95d5896422d031328.js",
         "https://dar11.github.io/ServiceApp/favicon.ico",
         "https://dar11.github.io/ServiceApp/index.html",
-        "https://dar11.github.io/ServiceApp/main.4789caf8615eaefb041a.js",
+        "https://dar11.github.io/ServiceApp/main.2c7149ff5f8e23daf5ed.js",
         "https://dar11.github.io/ServiceApp/polyfills.8bbb231b43165d65d357.js",
         "https://dar11.github.io/ServiceApp/runtime.26209474bfa8dc87a77c.js",
         "https://dar11.github.io/ServiceApp/styles.3ff695c00d717f2d2a11.css"
@@ -47,8 +47,8 @@
     "https://dar11.github.io/ServiceApp/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://dar11.github.io/ServiceApp/es2015-polyfills.bda95d5896422d031328.js": "1612fe8f7e8e0c856f0885ff179e93363c67834f",
     "https://dar11.github.io/ServiceApp/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "https://dar11.github.io/ServiceApp/index.html": "5fb1e98d550aba3d46aaa2932d00b6924419ed5a",
-    "https://dar11.github.io/ServiceApp/main.4789caf8615eaefb041a.js": "e78748d4f9b8ff6aeee9040b3a09eebe9854cc44",
+    "https://dar11.github.io/ServiceApp/index.html": "c8e2b99aeef7306a8fb0cc1b7df695e24bf9ec78",
+    "https://dar11.github.io/ServiceApp/main.2c7149ff5f8e23daf5ed.js": "becefce5fab7fd48907c54e72483028b4dce868b",
     "https://dar11.github.io/ServiceApp/polyfills.8bbb231b43165d65d357.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
     "https://dar11.github.io/ServiceApp/runtime.26209474bfa8dc87a77c.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "https://dar11.github.io/ServiceApp/styles.3ff695c00d717f2d2a11.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
