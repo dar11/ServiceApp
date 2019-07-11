@@ -28,6 +28,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   private localVideo;
   private remoteVideo;
 
+  public peerId = '';
+
   constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public beReceiver() {
     if (!this.peer) {
+      this.peerId = 'receiver';
       this.peer = new Peer('receiver', {
         host: location.hostname,
         port: location.port || location.protocol === 'https:' ? 443 : 80 ,
@@ -75,7 +78,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public beSender() {
     if (!this.peer) {
-
+      this.peerId = 'sender';
       this.peer = new Peer('sender', {
         host: location.hostname,
         port: location.port || location.protocol === 'https:' ? 443 : 80,
