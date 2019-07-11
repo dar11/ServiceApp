@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { SwUpdate, SwPush } from '@angular/service-worker';
+import { NgLocalization } from '@angular/common';
 // import * as Peer from 'peerjs';
 
 @Component({
@@ -42,7 +43,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public beReceiver() {
     if (!this.peer) {
-      this.peer = new Peer('receiver', {host: 'localhost', port: 9000, path: `/`});
+      this.peer = new Peer('receiver', {
+        host: location.hostname,
+        port: location.port || location.protocol === 'https:' ? 443 : 80 ,
+        path: '/peerjs',
+        debug: 3});
 
       // this.peer.on('connection', (conn) => {
       //   conn.on('data', (data) => {
@@ -71,7 +76,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   public beSender() {
     if (!this.peer) {
 
-      this.peer = new Peer('sender', {host: 'localhost', port: 9000, path: `/`});
+      this.peer = new Peer('sender', {
+        host: location.hostname,
+        port: location.port || location.protocol === 'https:' ? 443 : 80,
+        path: '/peerjs',
+        debug: 3});
 
       navigator.mediaDevices.getUserMedia({
         video: true
