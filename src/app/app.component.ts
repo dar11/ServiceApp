@@ -97,6 +97,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         const call = this.peer.call('receiver', this.localStream);
 
         call.on('stream', remoteStream => {
+        console.log(`Sender got remote ${remoteStream}`);
           this.remoteVideo.srcObject = remoteStream;
         });
 
