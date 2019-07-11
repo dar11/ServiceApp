@@ -1,8 +1,18 @@
 //Install express server
 const express = require('express');
 const path = require('path');
-
 const app = express();
+const ExpressPeerServer = require('peer').ExpressPeerServer;
+
+const server = app.listen(4300);
+
+const options = {
+  debug: true
+}
+
+const peerserver = ExpressPeerServer(server, options);
+
+app.use('/api', peerserver);
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/ServiceApp'));
@@ -13,4 +23,4 @@ res.sendFile(path.join(__dirname+'/dist/ServiceApp/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+// app.listen(process.env.PORT || 8080);
