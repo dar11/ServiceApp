@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
+    console.log(navigator);
     navigator.mediaDevices.getUserMedia({
       video: true
     }).then(stream => {
