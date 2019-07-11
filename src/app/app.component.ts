@@ -59,16 +59,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       // });
 
       this.peer.on('call', call => {
+        console.log('Receiver got Call');
         this.localStream = navigator.mediaDevices.getUserMedia({
           video: true
         })
         .then((stream) => {
+          console.log('Answer Call');
           this.localStream = stream;
           this.localVideo.srcObject = this.localStream;
 
           call.answer(this.localStream);
 
           call.on('stream', remoteStream => {
+            console.log(remoteStream);
             this.remoteVideo.srcObject = remoteStream;
           });
         });
