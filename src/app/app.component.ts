@@ -41,13 +41,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       console.log(this.localStream);
     });
     // this.startChat();
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        if (confirm("New version available. Load New Version?")) {
-          window.location.reload();
-        }
-      });
-    }
+    // if (this.swUpdate.isEnabled) {
+    //   this.swUpdate.available.subscribe(() => {
+    //     if (confirm("New version available. Load New Version?")) {
+    //       window.location.reload();
+    //     }
+    //   });
+    // }
   }
 
   public beReceiver() {
