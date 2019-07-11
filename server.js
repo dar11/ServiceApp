@@ -14,4 +14,8 @@ res.sendFile(path.join(__dirname+'/dist/ServiceApp/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+srv = app.listen(process.env.PORT || 8080);
+
+app.use('/peerjs', ExpressPeerServer(srv, {
+    debug: true
+}));
