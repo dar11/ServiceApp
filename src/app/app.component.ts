@@ -33,6 +33,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
+    navigator.mediaDevices.getUserMedia({
+      video: true
+    }).then(stream => {
+      this.localStream = stream;
+      console.log(this.localStream);
+    });
     // this.startChat();
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
@@ -60,20 +66,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       this.peer.on('call', call => {
         console.log('Receiver got Call');
-        navigator.mediaDevices.getUserMedia({
-          video: true
-        })
-        .then((stream) => {
-          console.log('Answer Call');
-          this.localStream = stream;
-          this.localVideo.srcObject = this.localStream;
+        console.log(navigator);
+        console.log('Answer Call');
+        this.localVideo.srcObject = this.localStream;
 
-          call.answer(this.localStream);
+        call.answer(this.localStream);
 
-          call.on('stream', remoteStream => {
-            console.log(remoteStream);
-            this.remoteVideo.srcObject = remoteStream;
-          });
+        call.on('stream', remoteStream => {
+          console.log(remoteStream);
+          this.remoteVideo.srcObject = remoteStream;
         });
       });
     }
@@ -88,11 +89,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         path: '/peerjs',
         debug: 3});
 
-      navigator.mediaDevices.getUserMedia({
-        video: true
-      })
-      .then((stream) => {
-        this.localStream = stream;
         console.log(this.localVideo);
         console.log(this.localStream);
         this.localVideo.srcObject = this.localStream;
@@ -103,7 +99,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         call.on('stream', remoteStream => {
           this.remoteVideo.srcObject = remoteStream;
         });
-      });
 
     }
   }
