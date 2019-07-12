@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { SwUpdate, SwPush } from '@angular/service-worker';
+import { NgLocalization } from '@angular/common';
 // import * as Peer from 'peerjs';
 
 @Component({
@@ -27,22 +28,36 @@ export class AppComponent implements OnInit, AfterViewInit {
   private localVideo;
   private remoteVideo;
 
+  public peerId = '';
+
   constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
+    console.log(navigator);
+    navigator.mediaDevices.getUserMedia({
+      video: true
+    }).then(stream => {
+      this.localStream = stream;
+      console.log(this.localStream);
+    });
     // this.startChat();
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        if (confirm("New version available. Load New Version?")) {
-          window.location.reload();
-        }
-      });
-    }
+    // if (this.swUpdate.isEnabled) {
+    //   this.swUpdate.available.subscribe(() => {
+    //     if (confirm("New version available. Load New Version?")) {
+    //       window.location.reload();
+    //     }
+    //   });
+    // }
   }
 
   public beReceiver() {
     if (!this.peer) {
-      this.peer = new Peer('receiver', {host: 'localhost', port: 9002, path: `/`});
+      this.peerId = 'receiver';
+      this.peer = new Peer('receiver', {
+        host: location.hostname,
+        port: location.port || location.protocol === 'https:' ? 443 : 80 ,
+        path: '/peerjs',
+        debug: 3});
 
       // this.peer.on('connection', (conn) => {
       //   conn.on('data', (data) => {
@@ -51,18 +66,16 @@ export class AppComponent implements OnInit, AfterViewInit {
       // });
 
       this.peer.on('call', call => {
-        this.localStream = navigator.mediaDevices.getUserMedia({
-          video: true
-        })
-        .then((stream) => {
-          this.localStream = stream;
-          this.localVideo.srcObject = this.localStream;
+        console.log('Receiver got Call');
+        console.log(navigator);
+        console.log('Answer Call');
+        this.localVideo.srcObject = this.localStream;
 
-          call.answer(this.localStream);
+        call.answer(this.localStream);
 
-          call.on('stream', remoteStream => {
-            this.remoteVideo.srcObject = remoteStream;
-          });
+        call.on('stream', remoteStream => {
+          console.log(remoteStream);
+          this.remoteVideo.srcObject = remoteStream;
         });
       });
     }
@@ -70,14 +83,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public beSender() {
     if (!this.peer) {
+      this.peerId = 'sender';
+      this.peer = new Peer('sender', {
+        host: location.hostname,
+        port: location.port || location.protocol === 'https:' ? 443 : 80,
+        path: '/peerjs',
+        debug: 3});
 
-      this.peer = new Peer('sender', {host: 'localhost', port: 9002, path: `/`});
-
-      navigator.mediaDevices.getUserMedia({
-        video: true
-      })
-      .then((stream) => {
-        this.localStream = stream;
         console.log(this.localVideo);
         console.log(this.localStream);
         this.localVideo.srcObject = this.localStream;
@@ -86,9 +98,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         const call = this.peer.call('receiver', this.localStream);
 
         call.on('stream', remoteStream => {
+        console.log(`Sender got remote ${remoteStream}`);
           this.remoteVideo.srcObject = remoteStream;
         });
-      });
 
     }
   }
