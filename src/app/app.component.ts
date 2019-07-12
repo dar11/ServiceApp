@@ -57,6 +57,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         host: location.hostname,
         port: location.port || location.protocol === 'https:' ? 443 : 80 ,
         path: '/peerjs',
+        config: {
+          'iceServers': [
+            {url: 'stun1.voiceeclipse.net'}
+          ]
+        },
         debug: 3});
 
       // this.peer.on('connection', (conn) => {
@@ -88,6 +93,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         host: location.hostname,
         port: location.port || location.protocol === 'https:' ? 443 : 80,
         path: '/peerjs',
+        config: {
+          'iceServers': [
+            {url: 'stun1.voiceeclipse.net'}
+          ]
+        },
         debug: 3});
 
         console.log(this.localVideo);
