@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public beReceiver() {
     if (!this.peer) {
-      this.peer = new Peer('receiver', {host: 'localhost', port: 9000, path: `/`});
+      this.peer = new Peer('receiver', {host: 'localhost', port: 9002, path: `/`});
 
       // this.peer.on('connection', (conn) => {
       //   conn.on('data', (data) => {
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public beSender() {
     if (!this.peer) {
 
-      this.peer = new Peer('sender', {host: 'localhost', port: 9000, path: `/`});
+      this.peer = new Peer('sender', {host: 'localhost', port: 9002, path: `/`});
 
       navigator.mediaDevices.getUserMedia({
         video: true
