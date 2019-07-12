@@ -1,10 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!-- 
 <div class="container" style="text-align:center">
   <h1>
     Hallo! {{peerId}}
   </h1>
-
-  <!-- <webcam></webcam> -->
 
   <video id="local" #local autoplay></video>
   <video id="remote" #remote autoplay></video>
@@ -15,4 +13,8 @@
 </div>
 
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+<input type="text" [(ngModel)]="targetSimplePeerpeer">
+<button (click)="connect()">Connect</button>
+<button (click)="message()">Send Message</button>
