@@ -17,7 +17,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   // @ViewChild('remote', { read: ElementRef }) set remoteVideoElement(content: ElementRef) {
   //   this.remoteVideo = content.nativeElement;
   // }
-  @ViewChild('videoEl') videoElement: any;
+  // @ViewChild('videoEl') videoElement: any;
+    @ViewChild('videoEl', { read: ElementRef }) set videoEl(content: ElementRef) {
+    this.videoElement = content.nativeElement;
+  }
   video: any;
 
   readonly VAPID_PUBLIC_KEY = "BKwgxDYxGJbZh-hyK64eejQ03_LlwZFto_4mm5Y9HhEh1F5-7ep2ZAqhHFEPapvWD2wfNGHpsh0hyxGNFQ5k7u8";
@@ -34,14 +37,39 @@ export class AppComponent implements OnInit, AfterViewInit {
   targetSimplePeerpeer: any;
   simplePeer: any;
   n = <any>navigator;
+  public videoElement;
 
   constructor(private swUpdate: SwUpdate, private swPush: SwPush) { }
 
   ngOnInit() {
-    let video = this.videoElement.nativeElement;
+    let video = this.videoElement;
     let peerx: any;
     this.n.getuserMedia = (this.n.getUserMedia || this.n.webkitGetUserMedia || this.n.mozGetUserMedia || this.n.msGetUserMedia)
-    this.n.getUserMedia({video:true, audio:true}, (stream) => {
+    // this.n.getUserMedia({video:true, audio:true}, (stream) => {
+    //   peerx = new SimplePeer ({
+    //     initiator: location.hash === '#init',
+    //     trickle: false,
+    //     stream:stream
+    //   })
+      
+    //   peerx.on('signal', function(data) {
+    //     console.log(JSON.stringify(data));
+        
+    //     this.targetSimplePeerpeer = data;
+    //   })
+      
+    //   peerx.on('data', function(data) {
+    //     console.log('Recieved message:' + data);
+    //   })
+      
+    //   peerx.on('stream', function(stream) {
+    //     video.srcObject = stream;
+    //     video.play();
+    //   })
+    // });
+
+    navigator.mediaDevices.getUserMedia({video:true})
+    .then(stream => {
       peerx = new SimplePeer ({
         initiator: location.hash === '#init',
         trickle: false,
