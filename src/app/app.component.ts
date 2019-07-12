@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         path: '/peerjs',
         config: {
           'iceServers': [
-            {url: 'stun.callwithus.com'}
+            {url: 'stun:stun.l.google.com:19302'}
           ]
         },
         debug: 3});
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         path: '/peerjs',
         config: {
           'iceServers': [
-            {url: 'stun.callwithus.com'}
+            {url: 'stun:stun.l.google.com:19302'}
           ]
         },
         debug: 3});
