@@ -129,9 +129,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         port: location.port || location.protocol === 'https:' ? 443 : 80 ,
         path: '/peerjs',
         config: {
-          'iceServers': [
-            {url: 'stun:stun1.l.google.com:19302'}
-          ]
+          // 'iceServers': [
+          //   {url: 'stun:stun1.l.google.com:19302'}
+          // ]
         },
         debug: 3});
 
@@ -155,9 +155,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         port: location.port || location.protocol === 'https:' ? 443 : 80,
         path: '/peerjs',
         config: {
-          'iceServers': [
-            {url: 'stun:stun1.l.google.com:19302'}
-          ]
+          // 'iceServers': [
+          //   {url: 'stun:stun1.l.google.com:19302'}
+          // ]
         },
         debug: 3});
         this.localVideo.srcObject = this.localStream;
